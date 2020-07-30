@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>{{concert.id?'Modifier ':'Ajouter '}} un concert</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Groupe/Chanteur :</ion-label>
+    <ion-input type="text" color="light-grey" [(ngModel)]="concert.group" name="groupe"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Salle de concert :</ion-label>
+    <ion-input type="text" color="light-grey" [(ngModel)]="concert.place" name="place"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Date :</ion-label>
+    <ion-datetime [(ngModel)]="concert.date" name="dateFull" displayFormat="DD/MM/YYYY"pickerFormat="DD/MMM/YYYY" monthShortNames="[Janv,Févr,Mars,Avr,Mai,Jui,Juill,Août,Sept,Oct,Nov,Déc" doneText="Valider" cancelText="Annuler" placeholder="Sélectionnez une date"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label  position="stacked">Note :</ion-label>
+  <app-rating [(starValue)]="concert.rating" name="rating" style="zoom:1.0;"></app-rating>
+  </ion-item>
+
+
+  <ion-button  expand="block" routerLink="/concert-list" (click)="validate()" >Valider</ion-button>
+</ion-content>

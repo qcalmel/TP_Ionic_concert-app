@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Liste des concerts</ion-title>
+    <ion-icon routerLink="/concert-add" style="font-size: 25px" slot="end" name="add"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngFor="let concert of concertList" >
+    <ion-card-header>
+    <ion-card-title>{{concert.group}}</ion-card-title>
+    <ion-card-subtitle>{{concert.place}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+      <p><app-rating disabledClick="true" style="font-size: 27px" [starValue]="concert.rating"></app-rating></p>
+      <ion-toolbar>
+       {{concert.date}}
+      <ion-icon style="font-size: 20px" slot="end" color="danger" (click)="delete(concert)" name="trash"></ion-icon>
+      <ion-icon style="font-size: 20px" slot="end" color="warning" routerLink="/concert-add/{{concert.id}}" name="pencil"></ion-icon>
+      </ion-toolbar>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
